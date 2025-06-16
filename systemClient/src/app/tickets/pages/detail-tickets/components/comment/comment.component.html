@@ -1,0 +1,35 @@
+<div class="ticket-comments-container">
+  @if (this.profile().role != UserRoles.Manager &&
+  this.ticket()?.status?.toString() !== TicketStatus.Closed) {
+  <form
+    [formGroup]="commentForm"
+    (ngSubmit)="submitComment()"
+    class="comment-form"
+  >
+    <mat-form-field appearance="fill" class="comment-input">
+      <mat-label for="message">
+        {{ "ticket.detail.comment.input.label" | translate }}
+      </mat-label>
+      <input matInput id="message" type="text" formControlName="message" />
+    </mat-form-field>
+
+    <button mat-fab color="primary" type="submit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
+  }
+
+  <div class="comments">
+    @for (comment of this.ticket()?.comments; track $index) {
+    <div class="comment-card">
+      <p class="comment-message">{{ comment.message }}</p>
+      <div class="comment-meta">
+        <span class="comment-user">{{ comment.username }}</span>
+        <span class="comment-date">{{
+          comment.createdAt | date : "MMM d, HH:mm"
+        }}</span>
+      </div>
+    </div>
+    }
+  </div>
+</div>

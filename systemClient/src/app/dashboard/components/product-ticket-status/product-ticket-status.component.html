@@ -1,0 +1,28 @@
+<div>
+  <p>
+    Shows the number of tickets grouped by product and by their current status.
+  </p>
+  <div>
+    <canvas id="productTicketPieChart"></canvas>
+  </div>
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: center;
+      width: 100%;
+      gap: 1rem;
+      margin-top: 1rem;
+    "
+  >
+    <mat-form-field>
+      <mat-label>{{ "ticket.form.product" | translate }}</mat-label>
+      <mat-select (valueChange)="submit($event)">
+        @for (product of products$ | async; track $index) {
+        <mat-option [value]="product.id">{{ product.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

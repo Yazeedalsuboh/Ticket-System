@@ -1,0 +1,152 @@
+<div class="ticket-add">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>
+          @if (this._ticketsService.toUpdateId().length) {
+
+          {{ "ticket.form.update" | translate }}
+
+          } @else {
+          {{ "ticket.form.add" | translate }}
+
+          }
+          <mat-icon style="transform: scale(1.5)"> local_activity </mat-icon>
+        </h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="ticketForm" (ngSubmit)="submit()">
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline">
+              <mat-label for="title">{{
+                "ticket.form.title" | translate
+              }}</mat-label>
+              <input matInput id="title" type="text" formControlName="title" />
+            </mat-form-field>
+            <small
+              *ngIf="
+                ticketForm.get('title')?.hasError('required') &&
+                ticketForm.get('title')?.touched
+              "
+            >
+              {{ "validator.required" | translate }}
+            </small>
+            <button
+              mat-fab
+              style="transform: scale(0.7)"
+              type="button"
+              (click)="this.translateText('title')"
+              matTooltip="Translate"
+            >
+              <mat-icon>translate</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="outline">
+              <mat-label for="description">{{
+                "ticket.form.description" | translate
+              }}</mat-label>
+              <textarea
+                id="description"
+                type="text"
+                formControlName="description"
+                matInput
+                [placeholder]="'ticket.form.descriptionPlaceholder' | translate"
+              ></textarea>
+            </mat-form-field>
+            <small
+              *ngIf="
+                ticketForm.get('description')?.hasError('required') &&
+                ticketForm.get('description')?.touched
+              "
+            >
+              {{ "validator.required" | translate }}
+            </small>
+            <button
+              mat-fab
+              style="transform: scale(0.7)"
+              type="button"
+              (click)="this.translateText('description')"
+              matTooltip="Translate"
+            >
+              <mat-icon>translate</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field>
+              <mat-label for="productName">{{
+                "ticket.form.product" | translate
+              }}</mat-label>
+              <mat-select
+                id="productName"
+                formControlName="productName"
+                name="productName"
+              >
+                @for (product of products$ | async; track $index) {
+                <mat-option [value]="product.name">{{
+                  product.name
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <input
+              #fileInput
+              type="file"
+              accept=".jpg, .png, .jpeg"
+              (change)="onFileSelected($event)"
+              style="display: none"
+              multiple
+            />
+            <button type="button" mat-flat-button (click)="fileInput.click()">
+              {{ "ticket.form.image" | translate }}
+            </button>
+            <mat-chip-set>
+              @for (file of this.ticketForm.get('attachments')?.value; track
+              $index) {
+              <mat-chip>
+                {{ file.name }}
+                <button matChipRemove (click)="removeFile(file.name)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              }@empty {
+              <mat-chip> {{ "ticket.form.noimages" | translate }} </mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+        </div>
+        <div class="button-row">
+          <button
+            type="submit"
+            mat-stroked-button
+            [disabled]="this.ticketForm.invalid"
+            *ngIf="this._ticketsService.toUpdateId().length"
+          >
+            {{ "ticket.form.update" | translate }}
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+
+          <button
+            type="submit"
+            mat-stroked-button
+            [disabled]="this.ticketForm.invalid"
+            *ngIf="!this._ticketsService.toUpdateId().length"
+          >
+            {{ "ticket.form.add" | translate }}
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,112 @@
+{
+  "app": {
+    "hello": "hello {{name}}",
+    "title": "Translation Demo"
+  },
+  "languages": {
+    "en": "En",
+    "ar": "Ar"
+  },
+  "register": {
+    "register": "Register",
+    "fullname": "Full Name",
+    "mobile": "Mobile",
+    "email": "Email",
+    "password": "Password",
+    "dateOfBirth": "Date Of Birth",
+    "address": "Address",
+    "required": "Required",
+    "invalidEmail": "Invalid email",
+    "invalidMobile": "Invalid Jordanian mobile number",
+    "passwordPattern": "At least 8 characters in length\nLowercase letters\nUppercase letters\nNumbers\nSpecial characters",
+    "fullnameMaxlength": "At least 20 characters",
+    "haveAccount": "Have An Account?",
+    "image": "Upload Profile Image"
+  },
+  "login": {
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "identifier": "Email, Phone Number Or Username ",
+    "password": "Password",
+    "required": "Required",
+    "invalidIdentifier": "Invalid email or phone number",
+    "passwordPattern": "At least 8 characters in length\nLowercase letters\nUppercase letters\nNumbers\nSpecial characters"
+  },
+  "ticket": {
+    "table": {
+      "title": "Title",
+      "status": "Status",
+      "client": "Client",
+      "product": "Product",
+      "assigned": "Assigned"
+    },
+    "form": {
+      "add": "Add Ticket",
+      "title": "Title",
+      "description": "Description",
+      "descriptionPlaceholder": "e.g. the product is collapsing",
+      "product": "Pick A Product",
+      "update": "Update Ticket",
+      "image": "Add Image",
+      "noimages": "No images added yet!"
+    },
+    "detail": {
+      "status": {
+        "open": "OPEN",
+        "assigned": "ASSIGNED",
+        "closed": "CLOSED",
+        "all": "ALL",
+        "assign": "ASSIGNED"
+      },
+      "prefix": {
+        "for": "For",
+        "by": "By"
+      },
+      "button": {
+        "close": "Close Ticket",
+        "image": "Add Image",
+        "update": "Update Ticket"
+      },
+      "assign": {
+        "unassigned": "Not assigned yet!",
+        "assigned": "Assigned to"
+      },
+      "noimages": "No images added yet!",
+      "comment": {
+        "button": {
+          "add": "Add Comment"
+        },
+        "input": {
+          "label": "e.g. this issue is amazing"
+        }
+      }
+    },
+    "list": "Ticket List",
+    "empty": "No Tickets Yet!"
+  },
+  "validator": {
+    "required": "Required"
+  },
+  "header": {
+    "add": "Add Ticket",
+    "tickets": "Tickets",
+    "clients": "Clients",
+    "employees": "Employees",
+    "dashboard": "Dashboard"
+  },
+  "users": {
+    "list": {
+      "fullName": "Full Name",
+      "mobile": "Mobile",
+      "email": "Email",
+      "count": "Ticket Count",
+      "active": "Active"
+    }
+  },
+  "analytics": {
+    "supportStatus": "Support Status",
+    "supportTicketStatus": "Support Ticket Status",
+    "productTicketStatus": "Product Ticket Status",
+    "ticketStatus": "Ticket Status"
+  }
+}

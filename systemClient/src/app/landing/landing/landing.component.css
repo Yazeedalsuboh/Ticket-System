@@ -1,0 +1,94 @@
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+.landing-container > div {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon-center mat-icon {
+  transform: scale(5);
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(5);
+  }
+  50% {
+    transform: scale(5.2);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 6rem;
+  font-weight: 600;
+}
+
+.header mat-icon {
+  font-size: 2.5rem;
+}
+
+.description {
+  margin: 1rem auto 2rem; /* Center it horizontally */
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  text-align: center; /* Ensure text itself is centered */
+}
+
+.icon-center {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0; /* Increased spacing to avoid overlap */
+}
+
+.icon-center mat-icon {
+  transform: scale(5);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.actions button mat-icon {
+  margin-right: 0.3rem;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #777;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}

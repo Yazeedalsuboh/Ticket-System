@@ -1,0 +1,30 @@
+<div class="chat-box" *ngIf="visible">
+  <div (click)="toggle()">
+    <button mat-fab style="transform: scale(0.8)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="chat-content" #scrollContainer>
+    <div *ngFor="let msg of messages">
+      <div [ngClass]="msg.from">{{ msg.text }}</div>
+    </div>
+  </div>
+
+  <form [formGroup]="chatForm" (ngSubmit)="sendMessage()" class="chat-input">
+    <mat-form-field appearance="fill">
+      <mat-label for="message">Message</mat-label>
+      <input
+        matInput
+        id="message"
+        type="text"
+        formControlName="message"
+        placeholder="Type a message..."
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<button mat-fab class="chat-toggle" *ngIf="!visible" (click)="toggle()">
+  <mat-icon>chat</mat-icon>
+</button>

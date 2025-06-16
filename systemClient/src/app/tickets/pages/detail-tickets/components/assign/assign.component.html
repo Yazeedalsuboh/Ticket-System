@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="assignForm" (ngSubmit)="assign()">
+    <mat-form-field appearance="fill">
+      <mat-label for="employeeId">Assign To Employee</mat-label>
+      <mat-select
+        id="employeeId"
+        formControlName="employeeId"
+        name="employeeId"
+      >
+        @for (employee of employees$ | async; track $index) {
+        <mat-option [value]="employee.id">{{ employee.fullName }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-fab type="submit" style="margin-left: 1rem">
+      <mat-icon> add </mat-icon>
+    </button>
+  </form>
+</div>

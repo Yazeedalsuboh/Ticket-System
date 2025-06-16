@@ -1,0 +1,14 @@
+<div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem">
+  @for (ele of data$ | async; track $index){
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <p style="text-align: center">
+        {{ ele.title }}
+      </p>
+      <p style="text-align: center">
+        {{ ele.amount }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

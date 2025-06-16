@@ -1,0 +1,85 @@
+/* styles.css */
+:root {
+  --primary-color: #3f51b5;
+  --accent-color: #e91e63;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg-color: #ffffff;
+  --card-text-color: #000000;
+}
+
+.light-theme {
+  --primary-color: #3f51b5;
+  --accent-color: #e91e63;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg-color: #ffffff;
+  --card-text-color: #000000;
+}
+
+.dark-theme {
+  --primary-color: #90caf9;
+  --accent-color: #f48fb1;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg-color: #1e1e1e;
+  --card-text-color: #ffffff;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Override Material Card styles */
+:host-context(.light-theme) ::ng-deep .mat-mdc-card.landing-card,
+:host-context(.dark-theme) ::ng-deep .mat-mdc-card.landing-card {
+  background-color: var(--card-bg-color) !important;
+  color: var(--card-text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure card content inherits theme */
+:host-context(.light-theme)
+  ::ng-deep
+  .mat-mdc-card.landing-card
+  .mat-mdc-card-content,
+:host-context(.dark-theme)
+  ::ng-deep
+  .mat-mdc-card.landing-card
+  .mat-mdc-card-content {
+  color: var(--card-text-color) !important;
+}
+
+/* Style buttons inside the card */
+:host-context(.light-theme) ::ng-deep .mat-mdc-button.mat-primary,
+:host-context(.dark-theme) ::ng-deep .mat-mdc-button.mat-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--text-color) !important;
+}
+
+:host-context(.light-theme) ::ng-deep .mat-mdc-button.mat-accent,
+:host-context(.dark-theme) ::ng-deep .mat-mdc-button.mat-accent {
+  background-color: var(--accent-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Ensure card header and description inherit text color */
+:host-context(.light-theme) ::ng-deep .mat-mdc-card.landing-card h1,
+:host-context(.dark-theme) ::ng-deep .mat-mdc-card.landing-card h1,
+:host-context(.light-theme) ::ng-deep .mat-mdc-card.landing-card .description,
+:host-context(.dark-theme) ::ng-deep .mat-mdc-card.landing-card .description {
+  color: var(--card-text-color) !important;
+}
+
+.landing-card {
+  background-color: var(--card-bg-color) !important;
+  color: var(--card-text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.landing-card .mat-mdc-card-content {
+  color: var(--card-text-color) !important;
+}

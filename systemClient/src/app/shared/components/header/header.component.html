@@ -1,0 +1,128 @@
+<nav
+  style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+  "
+>
+  <div style="font-weight: bold">
+    <h2>
+      <a [routerLink]="getLink()" style="text-decoration: none; color: inherit">
+        TicketEase
+      </a>
+    </h2>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px">
+    <div *ngIf="this.profile().role">
+      <button style="transform: scale(0.8)" mat-fab [matMenuTriggerFor]="menu">
+        <mat-icon> menu </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/tickets/add"
+          *ngIf="this.profile().role === UserRoles.Client"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          {{ "header.add" | translate }}
+        </button>
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/tickets/list"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          {{ "header.tickets" | translate }}
+        </button>
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/dashboard"
+          *ngIf="this.profile().role === UserRoles.Manager"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          {{ "header.dashboard" | translate }}
+        </button>
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/clients/list"
+          *ngIf="this.profile().role === UserRoles.Manager"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          {{ "header.clients" | translate }}
+        </button>
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/employees/list"
+          *ngIf="this.profile().role === UserRoles.Manager"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          {{ "header.employees" | translate }}
+        </button>
+        <button
+          mat-menu-item
+          routerLink="/employees/register"
+          routerLinkActive="active"
+          *ngIf="this.profile().role === UserRoles.Manager"
+        >
+          Add Employee
+        </button>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button style="transform: scale(0.8)" mat-fab [matMenuTriggerFor]="menu">
+        <mat-icon> settings </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="toggleTheme()">
+          Dark Mode
+          <mat-icon>dark_mode</mat-icon>
+        </button>
+        <button mat-menu-item (click)="translateText()">
+          Translate
+          <mat-icon>translate</mat-icon>
+        </button>
+      </mat-menu>
+    </div>
+
+    <div *ngIf="this.profile().role">
+      <button style="transform: scale(0.8)" mat-fab [matMenuTriggerFor]="menu">
+        <mat-icon> person </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>{{ this.profile().name }}</button>
+        <button mat-menu-item>{{ this.profile().email }}</button>
+        <button mat-menu-item>Role {{ this.profile().role }}</button>
+        <button mat-menu-item (click)="logout()">
+          Logout <mat-icon>logout</mat-icon>
+        </button>
+        <button
+          mat-menu-item
+          *ngIf="this.profile().role != UserRoles.Manager"
+          routerLink="/auth/change-password"
+          routerLinkActive="active"
+        >
+          Password <mat-icon>edit</mat-icon>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</nav>

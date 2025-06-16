@@ -1,0 +1,9 @@
+<div
+  class="home"
+  [dir]="this._apiService.currentLang() === 'ar' ? 'rtl' : 'ltr'"
+  style="font-family: sans-serif; padding: 10px"
+>
+  <app-header />
+  <app-chat-box *ngIf="this.profile().role" />
+  <router-outlet></router-outlet>
+</div>

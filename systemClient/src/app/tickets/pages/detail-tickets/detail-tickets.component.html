@@ -1,0 +1,162 @@
+<div class="ticket-detail">
+  @if (ticket$ | async; as ticket) {
+  <app-assign
+    *ngIf="
+      this.profile().role == UserRoles.Manager && !ticket.supportName.length
+    "
+    (ticketReload)="reloadTicket()"
+    [ticketId]="this.ticketId()"
+  />
+  <mat-card appearance="outlined" class="landing-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>
+          @if (this.translatedText().title.trim().length) {
+          {{ this.translatedText().title }}
+          } @else {
+
+          {{ ticket.title }}
+          }
+
+          <mat-chip style="transform: scale(0.8)">
+            {{ `ticket.detail.status.${ticket.status.toLowerCase()}` | translate }}
+          </mat-chip>
+
+          <button
+            mat-fab
+            style="transform: scale(0.7)"
+            type="button"
+            (click)="
+              this._aiService.enhanceTicket(ticket, 'title', this.ticketId())
+            "
+            *ngIf="
+              this.profile().role == UserRoles.Client &&
+              ticket.status == TicketStatus.Open
+            "
+            matTooltip="Enhance With AI"
+          >
+            <mat-icon> auto_fix_high </mat-icon>
+          </button>
+          <button
+            mat-fab
+            style="transform: scale(0.7)"
+            type="button"
+            (click)="this.translateText(ticket.title, 'title')"
+            matTooltip="Translate"
+          >
+            <mat-icon>translate</mat-icon>
+          </button>
+        </h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ "ticket.detail.prefix.by" | translate }}
+        {{ ticket.clientName }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>
+        {{ "ticket.detail.prefix.for" | translate }}
+        {{ ticket.productName }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>
+        {{
+          ticket.supportName === ""
+            ? ("ticket.detail.assign.unassigned" | translate)
+            : ("ticket.detail.assign.assigned" | translate) +
+              " " +
+              ticket.supportName
+        }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <p style="font-size: 1.2rem">
+          @if (this.translatedText().description.trim().length) {
+          {{ this.translatedText().description }}
+          } @else {
+
+          {{ ticket.description }}
+          }
+        </p>
+
+        <button
+          mat-fab
+          style="transform: scale(0.7)"
+          type="button"
+          (click)="
+            this._aiService.enhanceTicket(
+              ticket,
+              'description',
+              this.ticketId()
+            )
+          "
+          *ngIf="
+            this.profile().role == UserRoles.Client &&
+            ticket.status == TicketStatus.Open
+          "
+          matTooltip="Enhance With AI"
+        >
+          <mat-icon> auto_fix_high </mat-icon>
+        </button>
+        <button
+          mat-fab
+          style="transform: scale(0.7)"
+          type="button"
+          (click)="this.translateText(ticket.description, 'description')"
+          matTooltip="Translate"
+        >
+          <mat-icon>translate</mat-icon>
+        </button>
+      </div>
+      @for (attachment of ticket.attachments; track $index) {
+      <img style="width: 50%; margin: 0.2rem" [src]="attachment.fileUrl" />
+      } @empty {
+      <p>{{ "ticket.detail.noimages" | translate }}</p>
+      }
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="ticket.status.toString() != TicketStatus.Closed">
+      <div class="form-field" *ngIf="this.profile().role != UserRoles.Manager">
+        <input
+          type="file"
+          #fileInput
+          style="display: none"
+          accept=".jpg, .png, .jpeg"
+          (change)="onFileSelected($event)"
+          multiple
+        />
+        <button type="button" mat-button (click)="fileInput.click()">
+          {{ "ticket.detail.button.image" | translate }}
+        </button>
+      </div>
+
+      <button
+        mat-button
+        type="button"
+        (click)="update()"
+        *ngIf="
+          this.profile().role == UserRoles.Client &&
+          ticket.status != TicketStatus.Assign
+        "
+      >
+        {{ "ticket.detail.button.update" | translate }}
+      </button>
+      <button
+        mat-button
+        type="button"
+        (click)="closeTicket()"
+        *ngIf="this.profile().role == UserRoles.Support"
+      >
+        {{ "ticket.detail.button.close" | translate }}
+      </button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <app-comment
+        (ticketReload)="reloadTicket()"
+        [ticketId]="this.ticketId()"
+        [ticket]="ticket"
+      />
+    </mat-card-footer>
+  </mat-card>
+
+  }
+</div>

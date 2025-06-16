@@ -1,0 +1,57 @@
+<div style="display: flex; gap: 2rem">
+  <!-- Left section: filters + chart -->
+  <div style="flex: 2; display: flex; flex-direction: column; gap: 1rem">
+    <div>
+      <mat-button-toggle-group
+        aria-label="Chart Selector"
+        [(ngModel)]="selectedChart"
+        name="chartSelector"
+        value="ticket"
+      >
+        <mat-button-toggle value="ticket">Ticket Status</mat-button-toggle>
+        <mat-button-toggle value="support">Support Status</mat-button-toggle>
+        <mat-button-toggle value="supportTicket"
+          >Support Ticket Status</mat-button-toggle
+        >
+        <mat-button-toggle value="productTicket"
+          >Product Ticket Status</mat-button-toggle
+        >
+      </mat-button-toggle-group>
+    </div>
+    <div>
+      <mat-button-toggle-group
+        aria-label="Chart Selector"
+        (valueChange)="this.changeChart($event)"
+        name="chartSelector"
+        value="pie"
+      >
+        <mat-button-toggle value="pie">Pie</mat-button-toggle>
+        <mat-button-toggle value="bar">Bar</mat-button-toggle>
+        <mat-button-toggle value="doughnut">doughnut</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div>
+      <app-ticket-status
+        [chartType]="this.chartType()"
+        *ngIf="selectedChart === 'ticket'"
+      ></app-ticket-status>
+      <app-support-status
+        [chartType]="this.chartType()"
+        *ngIf="selectedChart === 'support'"
+      ></app-support-status>
+      <app-support-ticket-status
+        [chartType]="this.chartType()"
+        *ngIf="selectedChart === 'supportTicket'"
+      ></app-support-ticket-status>
+      <app-product-ticket-status
+        [chartType]="this.chartType()"
+        *ngIf="selectedChart === 'productTicket'"
+      ></app-product-ticket-status>
+    </div>
+  </div>
+
+  <!-- Right section: summary -->
+  <div style="flex: 1">
+    <app-summary></app-summary>
+  </div>
+</div>

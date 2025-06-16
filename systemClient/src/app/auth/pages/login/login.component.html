@@ -1,0 +1,88 @@
+<div class="login">
+  <mat-card appearance="outlined" class="landing-card">
+    <mat-card-content>
+      <mat-card-title>
+        <h3>{{ "login.login" | translate }}</h3>
+      </mat-card-title>
+      <form [formGroup]="Form" (ngSubmit)="submit()">
+        <div class="form-row">
+          <div class="form-field">
+            <mat-form-field appearance="fill">
+              <mat-label for="identifier">{{
+                "login.identifier" | translate
+              }}</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                id="identifier"
+                type="text"
+                formControlName="identifier"
+              />
+            </mat-form-field>
+            <small
+              *ngIf="
+                Form.get('identifier')?.hasError('required') &&
+                Form.get('identifier')?.touched
+              "
+            >
+              {{ "login.required" | translate }}
+            </small>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field appearance="fill">
+              <mat-label for="password">{{
+                "login.password" | translate
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                id="password"
+                formControlName="password"
+                [type]="showPassword ? 'text' : 'password'"
+              />
+              <mat-icon matSuffix (click)="togglePassword()">
+                {{ showPassword ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </mat-form-field>
+            <small
+              *ngIf="
+                Form.get('password')?.hasError('required') &&
+                Form.get('password')?.touched
+              "
+            >
+              {{ "login.required" | translate }}
+            </small>
+          </div>
+
+          <div class="button-row">
+            <button
+              routerLink="/auth/signup"
+              routerLinkActive="active"
+              type="button"
+              mat-raised-button
+            >
+              {{ "login.noAccount" | translate }}
+            </button>
+            <button
+              routerLink="/auth/forgot-password"
+              routerLinkActive="active"
+              type="button"
+              mat-raised-button
+            >
+              Forgot Password
+            </button>
+            <button
+              type="submit"
+              mat-raised-button
+              [disabled]="this.Form.invalid"
+            >
+              {{ "login.login" | translate }}
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

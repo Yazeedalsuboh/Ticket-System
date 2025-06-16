@@ -1,0 +1,112 @@
+{
+  "app": {
+    "hello": "مرحباً {{name}}",
+    "title": "عرض الترجمة"
+  },
+  "languages": {
+    "en": "إنجليزي",
+    "ar": "عربي"
+  },
+  "register": {
+    "register": "تسجيل",
+    "fullname": "الاسم الكامل",
+    "mobile": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "dateOfBirth": "تاريخ الميلاد",
+    "address": "العنوان",
+    "required": "إلزامي",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "invalidMobile": "رقم هاتف أردني غير صالح",
+    "passwordPattern": "8 أحرف على الأقل\nأحرف صغيرة\nأحرف كبيرة\nأرقام\nرموز خاصة",
+    "fullnameMaxlength": "20 حرفًا كحد أقصى",
+    "haveAccount": "هل لديك حساب؟",
+    "image": "تحميل صورة الملف الشخصي"
+  },
+  "login": {
+    "login": "تسجيل الدخول",
+    "noAccount": "ليس لديك حساب؟",
+    "identifier": "البريد الإلكتروني أو رقم الهاتف",
+    "password": "كلمة المرور",
+    "required": "إلزامي",
+    "invalidIdentifier": "بريد إلكتروني أو رقم هاتف غير صالح",
+    "passwordPattern": "8 أحرف على الأقل\nأحرف صغيرة\nأحرف كبيرة\nأرقام\nرموز خاصة"
+  },
+  "ticket": {
+    "table": {
+      "title": "العنوان",
+      "status": "الحالة",
+      "client": "العميل",
+      "product": "المنتج",
+      "assigned": "المُعين"
+    },
+    "form": {
+      "add": "إضافة تذكرة",
+      "title": "العنوان",
+      "description": "الوصف",
+      "descriptionPlaceholder": "مثال: المنتج ينهار",
+      "product": "اختر منتجًا",
+      "update": "تحديث التذكرة",
+      "image": "إضافة صورة",
+      "noimages": "لم يتم إضافة صور بعد!"
+    },
+    "detail": {
+      "status": {
+        "open": "مفتوحة",
+        "assigned": "مُعينة",
+        "closed": "مغلقة",
+        "all": "الكل",
+        "assign": "تعيين"
+      },
+      "prefix": {
+        "for": "لـ",
+        "by": "بواسطة"
+      },
+      "button": {
+        "close": "إغلاق التذكرة",
+        "image": "إضافة صورة",
+        "update": "تحديث التذكرة"
+      },
+      "assign": {
+        "unassigned": "لم يتم التعيين بعد!",
+        "assigned": "مُعين لـ"
+      },
+      "noimages": "لم يتم إضافة صور بعد!",
+      "comment": {
+        "button": {
+          "add": "إضافة تعليق"
+        },
+        "input": {
+          "label": "مثال: هذه المشكلة رائعة"
+        }
+      }
+    },
+    "list": "قائمة التذاكر",
+    "empty": "لا توجد تذاكر بعد!"
+  },
+  "validator": {
+    "required": "إلزامي"
+  },
+  "header": {
+    "add": "إضافة تذكرة",
+    "tickets": "التذاكر",
+    "clients": "العملاء",
+    "employees": "الموظفون",
+    "dashboard": "لوحة التحكم"
+  },
+  "users": {
+    "list": {
+      "fullName": "الاسم الكامل",
+      "mobile": "رقم الهاتف",
+      "email": "البريد الإلكتروني",
+      "count": "عدد التذاكر",
+      "active": "نشط"
+    }
+  },
+  "analytics": {
+    "supportStatus": "حالة الدعم",
+    "supportTicketStatus": "حالة تذاكر الدعم",
+    "productTicketStatus": "حالة تذاكر المنتج",
+    "ticketStatus": "حالة التذكرة"
+  }
+}
